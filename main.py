@@ -184,9 +184,9 @@ def pertanyaan3():
         st.error("Kolom 'review_score' atau 'review_id' tidak ditemukan dalam dataset. Pastikan dataset memiliki kolom yang sesuai.")
         
 # Jawaban pertanyaan 4
-def pertanyaan4(uploaded_file):
+def pertanyaan4():
     st.header("Hasil Analisis")
-    df = pd.read_csv(uploaded_file)
+    df = df_order
     df_order_status = df['order_status'].value_counts().reset_index()
     df_order_status.columns = ['order_status', 'count']
     df_order_status['percentage'] = df_order_status['count'] / df_order_status['count'].sum() * 100
@@ -799,7 +799,7 @@ elif st.session_state.current_tab == 'faris':
     pertanyaan3()
 
 elif st.session_state.current_tab == 'reza':
-    tab1, tab2, tab3, tab4 = st.tabs(["📌 Pertanyaan", "📜 Kode", "📂 Mengunggah File", "📊 Hasil Analisis"])
+    tab1, tab2, tab3 = st.tabs(["📌 Pertanyaan", "📜 Kode", "📊 Hasil Analisis"])
     with tab1:
         st.header("Bagaimana distribusi Status Pesanan, dan berapa persentase order dengan status 'delivered'❓")
 
@@ -838,12 +838,7 @@ elif st.session_state.current_tab == 'reza':
             )
 
     with tab3:
-        st.header("Mengunggah File")
-        uploaded_file = st.file_uploader("Upload file CSV", type=["csv"])
-
-    if uploaded_file is not None:
-        with tab4:
-            pertanyaan4(uploaded_file)
+        pertanyaan4()
 
 
 elif st.session_state.current_tab == 'bastian':
