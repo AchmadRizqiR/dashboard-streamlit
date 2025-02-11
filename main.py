@@ -103,40 +103,31 @@ def pertanyaan1():
 
 # Jawaban pertanyaan 2
 def pertanyaan2():
-    st.header("📂 Upload Dataset CSV")
-    uploaded_file = st.file_uploader("Pilih file CSV", type=["csv"])
+    df = pd.read_csv('DataSets/order_items_dataset.csv')
+    required_columns = {"shipping_limit_date", "price"}
+    if required_columns.issubset(df.columns):
+        df["shipping_limit_date"] = pd.to_datetime(df["shipping_limit_date"])
+        df["year_month"] = df["shipping_limit_date"].dt.to_period("M")
+        price_trend = df.groupby("year_month")["price"].mean().reset_index()
+        price_trend["year_month"] = price_trend["year_month"].astype(str)
 
-    if uploaded_file is not None:
-        df = pd.read_csv(uploaded_file)
-        st.success("Dataset berhasil diunggah!")
+        st.write("**📋 Tabel Analisis: Rata-rata Harga Produk per Bulan**")
+        st.dataframe(price_trend)
+        
+        st.write("**📊 Grafik Garis: Tren Rata-rata Harga Produk Per Bulan**")
+        plt.figure(figsize=(12, 6))
+        sns.lineplot(data=price_trend, x="year_month", y="price", marker="o", linestyle="-")
+        plt.xlabel("Tahun/Bulan")
+        plt.ylabel("Rata-rata Harga Produk")
+        plt.title("Tren Rata-rata Harga Produk Per Bulan")
+        plt.xticks(rotation=45)
+        plt.grid(True)
+        st.pyplot(plt)
+
+        st.write("🔍 Insight")
+        st.write("Berdasarkan analisis tren harga produk per bulan, ditemukan bahwa harga mengalami fluktuasi yang menunjukkan pola kenaikan dan penurunan yang tidak selalu konsisten setiap bulan. Namun, secara keseluruhan, harga menunjukkan tren meningkat dalam jangka panjang.")
     else:
-        st.warning("Silakan upload dataset terlebih dahulu.")
-
-    if uploaded_file is not None:
-        required_columns = {"shipping_limit_date", "price"}
-        if required_columns.issubset(df.columns):
-            df["shipping_limit_date"] = pd.to_datetime(df["shipping_limit_date"])
-            df["year_month"] = df["shipping_limit_date"].dt.to_period("M")
-            price_trend = df.groupby("year_month")["price"].mean().reset_index()
-            price_trend["year_month"] = price_trend["year_month"].astype(str)
-
-            st.write("**📋 Tabel Analisis: Rata-rata Harga Produk per Bulan**")
-            st.dataframe(price_trend)
-            
-            st.write("**📊 Grafik Garis: Tren Rata-rata Harga Produk Per Bulan**")
-            plt.figure(figsize=(12, 6))
-            sns.lineplot(data=price_trend, x="year_month", y="price", marker="o", linestyle="-")
-            plt.xlabel("Tahun/Bulan")
-            plt.ylabel("Rata-rata Harga Produk")
-            plt.title("Tren Rata-rata Harga Produk Per Bulan")
-            plt.xticks(rotation=45)
-            plt.grid(True)
-            st.pyplot(plt)
-
-            st.write("🔍 Insight")
-            st.write("Berdasarkan analisis tren harga produk per bulan, ditemukan bahwa harga mengalami fluktuasi yang menunjukkan pola kenaikan dan penurunan yang tidak selalu konsisten setiap bulan. Namun, secara keseluruhan, harga menunjukkan tren meningkat dalam jangka panjang.")
-        else:
-            st.error("Dataset tidak memiliki kolom yang diperlukan: 'shipping_limit_date' dan 'price'.")
+        st.error("Dataset tidak memiliki kolom yang diperlukan: 'shipping_limit_date' dan 'price'.")
 
 # Jawaban pertanyaan 3
 @st.cache_data
