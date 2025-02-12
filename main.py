@@ -705,7 +705,7 @@ elif st.session_state.current_tab == 'rizqi':
                 })
 
                 # Buat Pie Chart dengan Plotly
-                fig = px.pie(df_pie[:5], names="State", values="Jumlah Pelanggan", title="Distribusi Pelanggan per State", hole=.3, height= 600)
+                fig = px.pie(df_pie, names="State", values="Jumlah Pelanggan", title="Distribusi Pelanggan per State", hole=.3, height= 600)
 
                 # Tampilkan di Streamlit
                 st.plotly_chart(fig)
