@@ -101,6 +101,10 @@ def pertanyaan1():
     # Tampilkan di Streamlit
     st.plotly_chart(fig)
 
+    st.markdown("Insight : \n"
+        "Heatmap menunjukkan konsentrasi pembeli tertinggi berada di wilayah tenggara Brasil, khususnya di sekitar Sao Paulo dan Rio de Janeiro. "
+        "Wilayah ini terletak di bagian selatan benua Amerika Selatan. Selain itu terdapat sebagian kecil pelanggan yang berasal dari wilayah Portugal, Mexico dan bahkan Filipina.")
+
 # Jawaban pertanyaan 2
 def pertanyaan2():
     df = pd.read_csv('DataSets/order_items_dataset.csv')
@@ -845,6 +849,11 @@ elif st.session_state.current_tab == 'bastian':
     num_top_customers = st.slider("Jumlah Pelanggan Teratas", 5, 20, 10)
     
     pertanyaan5(num_top_customers)
+
+    st.markdown("Insight : \n"
+            "Loyalitas pelanggan terlihat jelas di Sao Paulo, dengan sebagian besar pembeli yang sering bertransaksi berasal dari negara bagian ini. "
+            "Terutama, pelanggan dengan total pembelian tertinggi (17 pembelian) berasal dari Sao Paulo. Selain itu, 4 dari 10 pelanggan teratas dengan pembelian terbanyak juga berlokasi di Sao Paulo. "
+            "Konsentrasi pelanggan tetap di Sao Paulo ini menunjukkan basis pelanggan yang kuat dan potensi loyalitas merek di wilayah tersebut.")
 
 elif st.session_state.current_tab == 'naufal':
     pertanyaan6()
