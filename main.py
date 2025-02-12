@@ -470,7 +470,7 @@ elif st.session_state.current_tab == 'anggota':
             )
     with cols1[2]:
         with st.container(border=True):
-            st.image('Image/rizqi.png', use_container_width=True)  # Gambar Portrait
+            st.image('Image/faris.png', use_container_width=True)  # Gambar Portrait
             st.markdown(
                 """
                 <div style="
