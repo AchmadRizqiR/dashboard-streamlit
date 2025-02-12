@@ -266,11 +266,11 @@ def pertanyaan6():
         prop_net = neutral_reviews / total_reviews * 100
         
         # Tab tampilan
-        tab1, tab2 = st.tabs(["Data", "Analisis Sentimen"])
+        tab1, tab2 = st.tabs(["Pertanyaan Analisis", "Analisis Sentimen"])
         
         with tab1:
-            st.subheader("Data Ulasan")
-            st.write(df_review.head())
+            st.subheader("Pertanyaan")
+            st.write('Berapa proporsi ulasan positif, negatif, dan netral dari total ulasan?')
             
         with tab2:
             st.subheader("Hasil Analisis Sentimen")
@@ -730,11 +730,11 @@ elif st.session_state.current_tab == 'dani':
 
     with tab2:
         st.subheader("🛠️ Langkah Analisis")
-        st.write("1. Mengunggah dataset CSV yang berisi data transaksi e-commerce.")
+        st.write("1. Menyiapkan dataset CSV yang diperlukan.")
         st.write("2. Mengonversi kolom tanggal pengiriman ke format datetime.")
         st.write("3. Mengelompokkan harga produk berdasarkan bulan dan tahun.")
         st.write("4. Menampilkan tabel rata-rata harga per bulan.")
-        st.write("5. Membuat grafik tren harga untuk visualisasi lebih baik.")
+        st.write("5. Membuat grafik tren harga untuk visualisasi.")
         st.write("6. Memberikan insight berdasarkan hasil analisis.")
 
     with tab3:   
