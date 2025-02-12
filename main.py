@@ -507,7 +507,7 @@ elif st.session_state.current_tab == 'anggota':
             )
     with cols2[1]:   
         with st.container(border=True):
-            st.image('Image/rizqi.png', use_container_width=True)  # Gambar Portrait
+            st.image('Image/bastian.png', use_container_width=True)  # Gambar Portrait
             st.markdown(
                 """
                 <div style="
@@ -527,7 +527,7 @@ elif st.session_state.current_tab == 'anggota':
             )
     with cols2[2]:
         with st.container(border=True):
-            st.image('Image/rizqi.png', use_container_width=True)  # Gambar Portrait
+            st.image('Image/naufal.png', use_container_width=True)  # Gambar Portrait
             st.markdown(
                 """
                 <div style="
