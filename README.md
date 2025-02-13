@@ -9,4 +9,5 @@ Anggota:
 6. Naufal Rafi (10123176)
 
 ## 📌 Link Terkait
-- [🔗 Website](https://dashboard-e-commerce-5.streamlit.app/)
+- [🔗 Website Dashboard](https://dashboard-e-commerce-5.streamlit.app/)
+- [▶️ Video Presentasi](https://youtu.be/BqtX826mNn8)
